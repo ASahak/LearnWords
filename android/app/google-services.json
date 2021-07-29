@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "347601364219",
+    "project_id": "learnwords-f4895",
+    "storage_bucket": "learnwords-f4895.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:347601364219:android:bb799d5da45faf336c3c5e",
+        "android_client_info": {
+          "package_name": "com.learnwords"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "347601364219-iv2eg8d0r7i2qcgrhf5hgvlkpuf9q9va.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDX20p3220R4DwSf31bzkR8MrDTLczdVjU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "347601364219-iv2eg8d0r7i2qcgrhf5hgvlkpuf9q9va.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
