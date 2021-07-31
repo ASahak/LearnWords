@@ -78,17 +78,17 @@ const Home: React.FC<{ route: { [x: string]: any }; navigation: any }> = ({
 
   const filterData = useCallback(
     async ({ filterBy, isGroupBy, searchValue }: FiltersModel) => {
+      setSelectedFilterBy(filterBy || '*');
       if (searchValue !== undefined) {
         setGettingNewWordsLoading(true);
         await getList({
-          filterBy: selectedFilterBy,
-          isGroupBy: Object.keys(FilterBy).indexOf(selectedFilterBy) === -1,
+          filterBy: filterBy,
+          isGroupBy: Object.keys(FilterBy).indexOf(filterBy as string) === -1,
           searchValue,
         });
         setFindWord(searchValue || '');
         setGettingNewWordsLoading(false);
       } else {
-        setSelectedFilterBy(filterBy || '*');
         if (filterBy !== selectedFilterBy) {
           setGettingNewWordsLoading(true);
           await getList({ filterBy, isGroupBy, searchValue });

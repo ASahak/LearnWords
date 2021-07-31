@@ -52,13 +52,21 @@ const Item: React.FC<{
   return (
     <View style={styles.item}>
       <View style={styles.title}>
-        {replaceAll(
-          (item[lang as keyof typeof Languages] || '').toLowerCase(),
-          searchValue.toLowerCase(),
+        {searchValue.length > 0 ? (
+          replaceAll(
+            (item[lang as keyof typeof Languages] || '').toLowerCase(),
+            searchValue.toLowerCase(),
+          )
+        ) : (
+          <Text>{item[lang as keyof typeof Languages] || ''}</Text>
         )}
       </View>
       <View style={[styles.title, { borderRightWidth: 0, paddingRight: 10 }]}>
-        {replaceAll((item.arm || '').toLowerCase(), searchValue.toLowerCase())}
+        {searchValue.length > 0 ? (
+          replaceAll((item.arm || '').toLowerCase(), searchValue.toLowerCase())
+        ) : (
+          <Text>{item.arm}</Text>
+        )}
       </View>
       <View style={styles.moreItems}>
         <Icon name="more-vertical" size={20} onPress={() => emitPopUp(item)} />

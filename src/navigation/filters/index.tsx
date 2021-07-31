@@ -40,7 +40,7 @@ const Filters: React.FC<{
   const [pageCount, setPageCount] = useState<number>(1);
 
   const onSearch = (evt: EventTarget) => {
-    emitFilter({ searchValue: evt });
+    emitFilter({ filterBy: selectedFilterBy, searchValue: evt });
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -59,21 +59,24 @@ const Filters: React.FC<{
     if (filter.value === 'group-by') {
       setDialogContent(filter.value);
     } else {
-      emitFilter({ filterBy: filter.value, isGroupBy: !!groupBy });
+      emitFilter({
+        filterBy: filter.value,
+        isGroupBy: !!groupBy,
+        searchValue: findWord,
+      });
       setModalVisible(false);
     }
   };
 
   const changePage = (dir: string) => {
     if (dir === 'prev') {
-      setActivePage(prevState => (prevState < 1 ? --prevState : 1));
+      setActivePage(prevState => (prevState > 1 ? prevState - 1 : 1));
     } else {
       setActivePage(prevState =>
         prevState < pageCount ? ++prevState : pageCount,
       );
     }
   };
-
   useEffect(() => {
     emitActivePage(activePage);
     // eslint-disable-next-line react-hooks/exhaustive-deps

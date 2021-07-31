@@ -45,9 +45,14 @@ const App = () => {
   };
 
   useEffect(() => {
-    onUser = DeviceEventEmitter.addListener('userEmit', data =>
-      setLoggedUser(data),
-    );
+    onUser = DeviceEventEmitter.addListener('userEmit', data => {
+      if (!data) {
+        setLoggedUser('not-logged');
+        setHardRefresh(prevState => !prevState);
+      } else {
+        setLoggedUser(data);
+      }
+    });
     onGroups = DeviceEventEmitter.addListener('groupsEmit', data =>
       setGroups(data),
     );
@@ -62,7 +67,6 @@ const App = () => {
     });
 
     (async () => {
-      // await Firebase.logOut();
       try {
         const data = await Firebase.getLoggedUser();
         if (data) {
